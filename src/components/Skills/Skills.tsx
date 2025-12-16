@@ -1,7 +1,10 @@
 import styles from './Skills.module.css';
-import { Code2, Database, Layout, Smartphone, Server, Wrench } from 'lucide-react';
+import { Code2, Database, Layout, Server, Wrench } from 'lucide-react';
+import { useScrollAnimation } from '../../hooks/useScrollAnimation';
 
 export function Skills() {
+  const { elementRef, isVisible } = useScrollAnimation();
+
   const skills = [
     {
       icon: <Layout size={24} />,
@@ -36,7 +39,12 @@ export function Skills() {
   ];
 
   return (
-    <section className={styles.skills} id="skills">
+    <section 
+      ref={elementRef}
+      className={`${styles.skills} ${isVisible ? 'animate-fade-in-up' : ''}`} 
+      style={{ opacity: 0 }}
+      id="skills"
+    >
       <div className={styles.container}>
         <h2 className={styles.title}>
           Minhas <span className={styles.highlight}>Habilidades</span>

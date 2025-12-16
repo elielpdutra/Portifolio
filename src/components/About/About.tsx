@@ -1,6 +1,8 @@
 import styles from './About.module.css';
+import { useScrollAnimation } from '../../hooks/useScrollAnimation';
 
 export function About() {
+  const { elementRef, isVisible } = useScrollAnimation();
   const stats = [
     { value: '2+', label: 'Anos de Exp.' },
     { value: '10+', label: 'Projetos' },
@@ -8,7 +10,12 @@ export function About() {
   ];
 
   return (
-    <section className={styles.about} id="about">
+    <section 
+      ref={elementRef}
+      className={`${styles.about} ${isVisible ? 'animate-fade-in-up' : ''}`} 
+      style={{ opacity: 0 }}
+      id="about"
+    >
       <div className={styles.container}>
         <div className={styles.imageWrapper}>
             {/* Tech-related random image from unsplash */}
@@ -23,14 +30,14 @@ export function About() {
           <h2 className={styles.title}>Criando soluções através do código</h2>
           
           <p className={styles.description}>
-            Sou o Eliel Porto, um apaixonado por tecnologia e resolução de problemas. 
-            Como desenvolvedor Fullstack, busco sempre a união perfeita entre uma interface 
-            elegante e um backend robusto.
+            Tenho 24 anos e sou formado em <strong>Análise e Desenvolvimento de Sistemas</strong>. 
+            Sou um desenvolvedor Fullstack apaixonado por transformar problemas complexos em 
+            interfaces intuitivas e sistemas robustos.
           </p>
           <p className={styles.description}>
-            Meu objetivo é transformar necessidades em aplicações reais, performáticas e 
-            que entreguem valor verdadeiro. Estou sempre aprendendo novas tecnologias para 
-            me manter na vanguarda do desenvolvimento web.
+            Com uma base sólida em lógica de programação e arquitetura de software, busco sempre 
+            a excelência técnica sem perder o foco na experiência do usuário. Estou constantemente 
+            estudando novas tecnologias para entregar o que há de mais moderno no mercado.
           </p>
 
           <div className={styles.statsGrid}>

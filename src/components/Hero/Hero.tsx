@@ -1,8 +1,16 @@
 import styles from './Hero.module.css';
+import { useScrollAnimation } from '../../hooks/useScrollAnimation';
 
 export function Hero() {
+  const { elementRef, isVisible } = useScrollAnimation();
+
   return (
-    <section className={styles.hero} id="home">
+    <section 
+      ref={elementRef}
+      className={`${styles.hero} ${isVisible ? 'animate-fade-in-up' : ''}`} 
+      style={{ opacity: 0 }} // Start invisible to avoid flash
+      id="home"
+    >
       <div className={styles.container}>
         <div className={styles.content}>
           <span className={styles.greeting}>Olá, eu sou Eliel Porto</span>
