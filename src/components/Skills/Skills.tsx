@@ -1,6 +1,7 @@
 import styles from './Skills.module.css';
 import { Code2, Database, Layout, Server, Wrench } from 'lucide-react';
 import { useScrollAnimation } from '../../hooks/useScrollAnimation';
+import { SkillCard } from './SkillCard';
 
 export function Skills() {
   const { elementRef, isVisible } = useScrollAnimation();
@@ -52,19 +53,7 @@ export function Skills() {
 
         <div className={styles.grid}>
           {skills.map((skill, index) => (
-            <div key={index} className={styles.card}>
-              <div className={styles.iconWrapper}>
-                {skill.icon}
-              </div>
-              <h3 className={styles.skillTitle}>{skill.title}</h3>
-              <p className={styles.skillDesc}>{skill.description}</p>
-              
-              <div className={styles.techList}>
-                {skill.techs.map(tech => (
-                  <span key={tech} className={styles.techTag}>{tech}</span>
-                ))}
-              </div>
-            </div>
+            <SkillCard key={index} {...skill} />
           ))}
         </div>
       </div>
