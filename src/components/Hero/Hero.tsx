@@ -5,7 +5,7 @@ export function Hero() {
     <section className={styles.hero} id="home">
       <div className={styles.container}>
         <div className={styles.content}>
-          <span className={styles.greeting}>Olá, eu sou</span>
+          <span className={styles.greeting}>Olá, eu sou Eliel Porto</span>
           <h1 className={styles.title}>
             Desenvolvedor <br />
             <span className={styles.highlight}>Fullstack</span>
