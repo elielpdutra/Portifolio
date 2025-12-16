@@ -1,0 +1,46 @@
+:root {
+  /* Colors */
+  --bg-color: #030014;
+  --text-primary: #F3F4F6;
+  --text-secondary: #9CA3AF;
+  --primary-color: #6366f1;
+  --secondary-color: #a855f7;
+  --accent-color: #ec4899;
+  
+  /* Gradients */
+  --primary-gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+
+  /* Typography */
+  --font-main: 'Inter', system-ui, -apple-system, sans-serif;
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+  --text-5xl: 3rem;
+
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 2rem;
+  --spacing-lg: 4rem;
+  --spacing-xl: 8rem;
+
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  
+  /* Z-index */
+  --z-header: 100;
+  --z-modal: 200;
+}
+
+/* Dark Mode Defaults */
+html {
+  color-scheme: dark;
+}
