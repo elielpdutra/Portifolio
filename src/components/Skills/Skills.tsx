@@ -18,26 +18,20 @@ export function Skills() {
     {
       icon: <Database size={24} />,
       title: 'Database',
-      description: 'Modelagem e otimização de bancos de dados.',
-      techs: ['PostgreSQL', 'MongoDB', 'Redis', 'Prisma']
+      description: 'Modelagem e manipulação de bancos de dados relacionais.',
+      techs: ['PostgreSQL', 'MySQL', 'Prisma']
     },
     {
       icon: <Code2 size={24} />,
       title: 'Clean Code',
-      description: 'Código limpo, testável e seguindo os princípios SOLID.',
-      techs: ['Jest', 'Cypress', 'Design Patterns']
-    },
-     {
-      icon: <Smartphone size={24} />,
-      title: 'Mobile',
-      description: 'Desenvolvimento de aplicações móveis multiplataforma.',
-      techs: ['React Native', 'Expo']
+      description: 'Código limpo, testável e seguindo boas práticas.',
+      techs: ['Design Patterns', 'SOLID', 'Git Controls']
     },
     {
       icon: <Wrench size={24} />,
-      title: 'DevOps & Tools',
-      description: 'Configuração de ambiente e CI/CD.',
-      techs: ['Docker', 'Git', 'AWS', 'Vercel']
+      title: 'Ferramentas',
+      description: 'Controle de versão e produtividade.',
+      techs: ['Git', 'GitHub', 'VS Code', 'Insomnia']
     }
   ];
 
