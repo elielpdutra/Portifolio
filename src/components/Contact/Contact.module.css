@@ -1,0 +1,125 @@
+.contact {
+  background: #020010;
+  position: relative;
+  overflow: hidden;
+}
+
+.footer {
+  padding: 4rem 2rem 2rem;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.top {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  margin-bottom: 4rem;
+  align-items: center;
+}
+
+.title {
+  font-size: var(--text-4xl);
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.highlight {
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.description {
+  color: var(--text-secondary);
+  font-size: var(--text-lg);
+  margin-bottom: 2rem;
+  max-width: 450px;
+}
+
+.socials {
+  display: flex;
+  gap: 1rem;
+}
+
+.socialLink {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--glass-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-primary);
+  transition: all 0.2s;
+}
+
+.socialLink:hover {
+  background: var(--primary-color);
+  transform: translateY(-5px);
+  border-color: var(--primary-color);
+}
+
+.form {
+  background: var(--glass-bg);
+  padding: 2.5rem;
+  border-radius: 1.5rem;
+  border: 1px solid var(--glass-border);
+}
+
+.inputGroup {
+  margin-bottom: 1.5rem;
+}
+
+.input, .textarea {
+  width: 100%;
+  padding: 1rem;
+  background: rgba(0,0,0,0.3);
+  border: 1px solid var(--glass-border);
+  border-radius: 0.5rem;
+  color: var(--text-primary);
+  font-family: inherit;
+  transition: border-color 0.2s;
+}
+
+.textarea {
+  resize: vertical;
+}
+
+.input:focus, .textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+.button {
+  width: 100%;
+  padding: 1rem;
+  background: var(--primary-gradient);
+  border-radius: 0.5rem;
+  color: white;
+  font-weight: 600;
+  transition: opacity 0.2s;
+}
+
+.button:hover {
+  opacity: 0.9;
+}
+
+.bottom {
+  border-top: 1px solid var(--glass-border);
+  padding-top: 2rem;
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: var(--text-sm);
+}
+
+@media (max-width: 768px) {
+  .top {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
