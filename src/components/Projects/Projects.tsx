@@ -29,7 +29,10 @@ function ProjectItem({ project }: { project: any }) {
         
         <div className={styles.projectInfo}>
             <span className={styles.projectId}>{project.id}</span>
-            <h3 className={styles.projectTitle}>{project.title}</h3>
+            <div className={styles.titleWrapper}>
+                <h3 className={styles.projectTitle}>{project.title}</h3>
+                <p className={styles.projectDescription}>{project.description}</p>
+            </div>
         </div>
         <div className={styles.projectMeta}>
             <span className={styles.projectTech}>{project.tech}</span>

@@ -5,7 +5,7 @@ export function About() {
   const { elementRef, isVisible } = useScrollAnimation();
   const stats = [
     { value: '01+', label: 'ANO EXP.' },
-    { value: '05+', label: 'PROJETOS' },
+    { value: '01', label: 'PROJETO' },
     { value: '100%', label: 'COMPROMISSO' },
   ];
 

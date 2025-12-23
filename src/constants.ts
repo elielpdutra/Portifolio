@@ -8,34 +8,9 @@ export const PROJECTS_DATA = [
   { 
     id: '01', 
     title: 'E-COMMERCE API', 
-    tech: 'Node.js / PostgreSQL', 
-    year: '2024', 
-    url: '#', // Será atualizado quando o projeto estiver no ar
-    description: 'API Restful completa com gestão de produtos e pedidos.'
-  },
-  { 
-    id: '02', 
-    title: 'FINANCE DASH', 
-    tech: 'React / TypeScript', 
-    year: '2023', 
-    url: '#', 
-    description: 'Dashboard interativo para controle financeiro pessoal.'
-  },
-  { 
-    id: '03', 
-    title: 'TASK MANAGER', 
-    tech: 'NestJS / Docker', 
-    year: '2023', 
-    url: '#', 
-    description: 'Gerenciador de tarefas com arquitetura em microsserviços.'
-  },
-  { 
-    id: '04', 
-    title: 'PORTFOLIO V1', 
-    tech: 'Vite / CSS Modules', 
-    year: '2022', 
-    url: 'https://github.com/elielpdutra', // Linkando para o github por enquanto
-    description: 'Primeira versão deste portfólio.'
-  },
+    tech: 'Node.js / PostgreSQL / Prisma / Docker', 
+    year: '2025', 
+    url: 'https://github.com/elielpdutra/ecommerce-api', 
+    description: 'Este projeto foi desenvolvido para demonstrar o domínio de uma stack moderna e de alta performance no backend. A API gerencia todo o ciclo de vida de um e-commerce: desde o catálogo de produtos e carrinhos persistentes até o fechamento de pedidos. O grande diferencial técnico é a implementação de Transações do Prisma, garantindo que operações complexas de banco de dados (como descontar estoque e limpar carrinho) ocorram de forma atômica e segura. Além disso, a aplicação é totalmente conteinerizada via Docker, facilitando o deploy e a escalabilidade.'
+  }
 ];
-
