@@ -1,9 +1,50 @@
+import { useRef, useEffect } from 'react';
 import styles from './Projects.module.css';
-import { Code2, Github } from 'lucide-react';
 import { useScrollAnimation } from '../../hooks/useScrollAnimation';
+import { PROJECTS_DATA } from '../../constants';
+
+function ProjectItem({ project }: { project: any }) {
+  const itemRef = useRef<HTMLAnchorElement>(null);
+  
+  useEffect(() => {
+    const element = itemRef.current;
+    if (!element) return;
+
+    const handleMouseMove = (e: MouseEvent) => {
+      const rect = element.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      element.style.setProperty('--mouse-x', `${x}px`);
+      element.style.setProperty('--mouse-y', `${y}px`);
+    };
+
+    element.addEventListener('mousemove', handleMouseMove);
+    return () => element.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
+  return (
+    <a ref={itemRef} href={project.url} className={styles.projectItem}>
+        {/* Glow Element */}
+        <div className={styles.spotlight} aria-hidden="true" />
+        
+        <div className={styles.projectInfo}>
+            <span className={styles.projectId}>{project.id}</span>
+            <h3 className={styles.projectTitle}>{project.title}</h3>
+        </div>
+        <div className={styles.projectMeta}>
+            <span className={styles.projectTech}>{project.tech}</span>
+            <span className={styles.projectYear}>{project.year}</span>
+        </div>
+    </a>
+  );
+}
+
+
 
 export function Projects() {
   const { elementRef, isVisible } = useScrollAnimation();
+
+  const projects = PROJECTS_DATA;
 
   return (
     <section 
@@ -13,26 +54,16 @@ export function Projects() {
       id="projects"
     >
       <div className={styles.container}>
-        <h2 className={styles.title}>
-          Projetos <span className={styles.highlight}>Destaque</span>
-        </h2>
+        <div className={styles.header}>
+            <span className={styles.label}>PROJETOS SELECIONADOS</span>
+        </div>
 
-        <div className={styles.workingOn}>
-            <div className={styles.codingIcon}>
-                <Code2 size={48} />
-            </div>
-            <h3>Em desenvolvimento</h3>
-            <p>
-                Estou trabalhando em projetos incríveis no momento. 
-                Em breve, você poderá conferir o resultado do meu trabalho por aqui.
-            </p>
-            <a href="https://github.com/elielpdutra" target="_blank" rel="noopener noreferrer" className={styles.githubLink}>
-                <Github size={20} />
-                Acompanhe meu GitHub
-            </a>
+        <div className={styles.projectList}>
+            {projects.map((project) => (
+                <ProjectItem key={project.id} project={project} />
+            ))}
         </div>
       </div>
     </section>
   );
 }
-

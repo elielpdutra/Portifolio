@@ -1,9 +1,21 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import styles from './Header.module.css';
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
+
+  // Close mobile menu if window resizes to desktop
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 768) {
+        setIsOpen(false);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const navItems = [
     { label: 'Sobre', href: '#about' },
@@ -16,7 +28,7 @@ export function Header() {
     <header className={styles.header}>
       <div className={styles.navContainer}>
         <a href="#" className={styles.logo}>
-          Eliel Porto<span style={{ color: 'var(--primary-color)' }}>.</span>
+          ELIEL PORTO
         </a>
 
         {/* Desktop Nav */}

@@ -1,23 +1,53 @@
-import { useState, FormEvent } from 'react';
+import { useForm, ValidationError } from '@formspree/react';
+import { useEffect } from 'react';
 import styles from './Contact.module.css';
-import { Mail, Linkedin, Github, Send, CheckCircle2, Loader2 } from 'lucide-react';
 import { useScrollAnimation } from '../../hooks/useScrollAnimation';
+import { SOCIAL_LINKS } from '../../constants';
 
 export function Contact() {
   const { elementRef, isVisible } = useScrollAnimation();
-  const [formState, setFormState] = useState<'idle' | 'submitting' | 'success'>('idle');
+  const [state, handleSubmit, reset] = useForm("xovgzbel");
 
-  const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault();
-    setFormState('submitting');
-    
-    // Simulate network request
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    setFormState('success');
-    
-    // Reset after showing success
-    setTimeout(() => setFormState('idle'), 3000);
-  };
+  useEffect(() => {
+    if (state.succeeded) {
+      const timer = setTimeout(() => {
+        reset();
+      }, 5000); // Reseta após 5 segundos
+
+      return () => clearTimeout(timer);
+    }
+  }, [state.succeeded, reset]);
+
+  if (state.succeeded) {
+      return (
+        <section 
+          ref={elementRef}
+          className={`${styles.contact} ${isVisible ? 'animate-fade-in-up' : ''}`} 
+          id="contact"
+        >
+          <div className={styles.container}>
+            <div className={styles.header}>
+                <h2 className={styles.title}>VAMOS CONVERSAR</h2>
+                <div className={styles.successWrapper}>
+                    <p className={styles.successMessage} style={{ fontSize: '1.5rem', marginTop: '2rem' }}>
+                        Obrigado! Sua mensagem foi enviada.
+                    </p>
+                    <p className={styles.subtitle} style={{ marginTop: '1rem' }}>
+                        O formulário voltará em instantes...
+                    </p>
+                    <button 
+                        onClick={() => reset()} 
+                        className={styles.button} 
+                        style={{ marginTop: '1rem', padding: '0.5rem 1rem', fontSize: '0.8rem' }}
+                    >
+                        ENVIAR OUTRA AGORA
+                    </button>
+                </div>
+            </div>
+          </div>
+        </section>
+      );
+  }
 
   return (
     <section 
@@ -26,73 +56,79 @@ export function Contact() {
       style={{ opacity: 0 }}
       id="contact"
     >
-        <footer className={styles.footer}>
-            <div className={styles.container}>
-                <div className={styles.top}>
-                    <div className={styles.info}>
-                        <h2 className={styles.title}>Vamos trabalhar <span className={styles.highlight}>juntos?</span></h2>
-                        <p className={styles.description}>
-                            Estou sempre aberto a novos desafios e oportunidades. 
-                            Envie uma mensagem e vamos criar algo incrível.
-                        </p>
-                        
-                        <div className={styles.socials}>
-                            <a href="#" className={styles.socialLink} title="LinkedIn">
-                                <Linkedin size={24} />
-                            </a>
-                            <a href="https://github.com/elielporto" target="_blank" className={styles.socialLink} title="GitHub">
-                                <Github size={24} />
-                            </a>
-                            <a href="mailto:contato@elielporto.com" className={styles.socialLink} title="Email">
-                                <Mail size={24} />
-                            </a>
-                        </div>
-                    </div>
+      <div className={styles.container}>
+        <div className={styles.header}>
+            <h2 className={styles.title}>VAMOS CONVERSAR</h2>
+            <p className={styles.subtitle}>
+                Tem um projeto em mente? Vamos transformar sua ideia em realidade.
+            </p>
+        </div>
 
-                    <form className={styles.form} onSubmit={handleSubmit}>
-                        {formState === 'success' ? (
-                            <div className={styles.successMessage}>
-                                <CheckCircle2 size={48} className={styles.successIcon} />
-                                <h3>Mensagem enviada!</h3>
-                                <p>Obrigado pelo contato. Retornarei em breve.</p>
-                            </div>
-                        ) : (
-                            <>
-                                <div className={styles.inputGroup}>
-                                    <input type="text" required className={styles.input} placeholder=" " />
-                                    <label className={styles.label}>Seu nome</label>
-                                </div>
-                                <div className={styles.inputGroup}>
-                                    <input type="email" required className={styles.input} placeholder=" " />
-                                    <label className={styles.label}>Seu melhor email</label>
-                                </div>
-                                <div className={styles.inputGroup}>
-                                    <textarea required rows={4} className={styles.textarea} placeholder=" "></textarea>
-                                    <label className={styles.label}>Sua mensagem</label>
-                                </div>
-                                <button type="submit" className={styles.button} disabled={formState === 'submitting'}>
-                                    {formState === 'submitting' ? (
-                                        <>
-                                            <Loader2 size={20} className={styles.spinner} />
-                                            Enviando...
-                                        </>
-                                    ) : (
-                                        <>
-                                            Enviar Mensagem
-                                            <Send size={20} />
-                                        </>
-                                    )}
-                                </button>
-                            </>
-                        )}
-                    </form>
-                </div>
-
-                <div className={styles.bottom}>
-                    <p>&copy; {new Date().getFullYear()} Eliel Porto. Criado com React & TypeScript.</p>
-                </div>
+        <div className={styles.content}>
+            <div className={styles.links}>
+                <a href={SOCIAL_LINKS.EMAIL} className={styles.linkItem}>
+                    elielpdutra.dev@gmail.com
+                    <span className={styles.arrow}>→</span>
+                </a>
+                <a href={SOCIAL_LINKS.LINKEDIN} target="_blank" rel="noopener noreferrer" className={styles.linkItem}>
+                    LINKEDIN
+                    <span className={styles.arrow}>→</span>
+                </a>
+                <a href={SOCIAL_LINKS.GITHUB} target="_blank" rel="noopener noreferrer" className={styles.linkItem}>
+                    GITHUB
+                    <span className={styles.arrow}>→</span>
+                </a>
             </div>
-        </footer>
+
+            <form className={styles.form} onSubmit={handleSubmit}>
+                <div className={styles.inputGroup}>
+                    <input 
+                        id="name"
+                        type="text" 
+                        name="name" 
+                        required 
+                        className={styles.input} 
+                        placeholder="NOME" 
+                    />
+                    <ValidationError prefix="Name" field="name" errors={state.errors} className={styles.errorMessage} />
+                </div>
+                <div className={styles.inputGroup}>
+                    <input 
+                        id="email"
+                        type="email" 
+                        name="email" 
+                        required 
+                        className={styles.input} 
+                        placeholder="EMAIL" 
+                    />
+                    <ValidationError prefix="Email" field="email" errors={state.errors} className={styles.errorMessage} />
+                </div>
+                <div className={styles.inputGroup}>
+                    <textarea 
+                        id="message"
+                        name="message" 
+                        required 
+                        rows={1} 
+                        className={styles.textarea} 
+                        placeholder="MENSAGEM"
+                    ></textarea>
+                    <ValidationError prefix="Message" field="message" errors={state.errors} className={styles.errorMessage} />
+                </div>
+                
+                <button type="submit" className={styles.button} disabled={state.submitting}>
+                    {state.submitting ? 'ENVIANDO...' : 'ENVIAR PROPOSTA'}
+                </button>
+
+                {state.errors && (
+                    <p className={styles.errorMessage}>Ocorreu um erro. Verifique os campos.</p>
+                )}
+            </form>
+        </div>
+
+        <div className={styles.footer}>
+            <p>© {new Date().getFullYear()} ELIEL PORTO. </p>
+        </div>
+      </div>
     </section>
   );
 }

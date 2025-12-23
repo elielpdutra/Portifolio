@@ -1,91 +1,159 @@
 .projects {
-  padding: var(--spacing-xl) 2rem;
+  padding: 8rem 2rem;
   background: var(--bg-color);
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
 }
 
-.title {
-  font-size: var(--text-3xl);
-  font-weight: 700;
-  margin-bottom: 3rem;
-  text-align: center;
+.label {
+  font-family: var(--font-main);
+  font-size: var(--text-sm);
+  letter-spacing: 0.2em;
+  color: var(--text-secondary);
+  border: 1px solid var(--text-secondary);
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  text-transform: uppercase;
 }
 
-.highlight {
-  background: var(--primary-gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+.header {
+  margin-bottom: 6rem;
 }
 
-.workingOn {
+.projectList {
   display: flex;
   flex-direction: column;
+}
+
+.projectItem {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  text-align: center;
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
-  padding: 4rem 2rem;
-  border-radius: 1.5rem;
-  max-width: 600px;
-  margin: 0 auto;
+  padding: 3rem 0;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
 }
 
-.codingIcon {
-  color: var(--primary-color);
-  margin-bottom: 1.5rem;
-  animation: pulse 2s infinite ease-in-out;
+.projectItem:last-child {
+  border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 
-.workingOn h3 {
-  font-size: var(--text-xl);
-  font-weight: 700;
-  margin-bottom: 1rem;
+.projectInfo {
+  display: flex;
+  align-items: baseline;
+  gap: 2rem;
 }
 
-.workingOn p {
+.projectId {
+  font-family: var(--font-main);
   color: var(--text-secondary);
-  line-height: 1.6;
-  margin-bottom: 2rem;
+  font-size: var(--text-sm);
+  width: 30px;
 }
 
-.githubL.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2.5rem;
+.projectTitle {
+  font-family: var(--font-display);
+  font-size: 4rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  margin: 0;
+  transition: transform 0.3s;
+}
+
+.projectMeta {
+  display: flex;
+  gap: 4rem;
+  font-family: var(--font-main);
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  font-size: var(--text-sm);
+  letter-spacing: 0.1em;
+}
+
+/* Interaction Effects */
+.projectItem:hover {
+  background: rgba(255,255,255,0.02);
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.spotlight {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background: radial-gradient(
+    800px circle at var(--mouse-x) var(--mouse-y),
+    rgba(255, 255, 255, 0.05),
+    transparent 40%
+  );
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.projectItem:hover .spotlight {
+  opacity: 1;
+}
+
+.projectItem:hover .projectTitle {
+  transform: translateX(10px);
+  color: #fff;
+}
+
+.projectItem:hover .projectMeta {
+  color: #fff;
+}
+
+@media (max-width: 960px) {
+  .projectItem {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .projectInfo {
+    gap: 1rem;
+  }
+
+  .projectTitle {
+    font-size: 2.5rem;
+  }
+  
+  .projectMeta {
+    width: 100%;
+    justify-content: space-between;
+    padding-left: 0; /* Align with left edge */
+    gap: 1rem;
+  }
 }
 
 @media (max-width: 480px) {
-  .grid {
-    grid-template-columns: 1fr;
+  .projects {
+    padding: 4rem 1.5rem; /* Standardized padding */
   }
-}
-.githubLink {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1.5rem;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid var(--glass-border);
-  border-radius: 999px;
-  color: var(--text-primary);
-  text-decoration: none;
-  font-weight: 500;
-  transition: all 0.2s;
-}
 
-.githubLink:hover {
-  background: rgba(255,255,255,0.1);
-  border-color: var(--primary-color);
-  transform: translateY(-2px);
-}
+  .projectItem {
+    padding: 2rem 0;
+  }
 
-@keyframes pulse {
-  0% { opacity: 0.5; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.1); }
-  100% { opacity: 0.5; transform: scale(1); }
+  .projectTitle {
+    font-size: clamp(1.2rem, 6vw, 1.75rem); /* Fluid mobile title */
+    word-break: break-word;
+    line-height: 1.1;
+  }
+
+  .projectMeta {
+    flex-direction: column;
+    gap: 0.5rem;
+    padding-left: 0;
+  }
 }

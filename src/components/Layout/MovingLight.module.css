@@ -1,0 +1,20 @@
+.movingLight {
+  position: fixed; /* Fixado na tela para acompanhar o scroll */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  /* Visible but nice purple light */
+  background: radial-gradient(circle at 50% 50%, rgba(120, 50, 255, 0.4), transparent 70%); 
+  filter: blur(100px); 
+  z-index: 0; /* Behind content */
+  pointer-events: none; /* Keep this */
+  animation: ambientMove 25s ease-in-out infinite alternate;
+}
+
+@keyframes ambientMove {
+  0% { transform: translate(-30%, -30%) scale(1); }
+  33% { transform: translate(30%, 10%) scale(1.1); }
+  66% { transform: translate(-10%, 40%) scale(0.9); }
+  100% { transform: translate(20%, -20%) scale(1); }
+}

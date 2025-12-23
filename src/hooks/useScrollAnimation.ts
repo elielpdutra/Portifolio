@@ -15,8 +15,8 @@ export function useScrollAnimation() {
         });
       },
       {
-        threshold: 0.1, // Trigger when 10% of the element is visible
-        rootMargin: '0px 0px -50px 0px' // Offset slightly so it triggers before bottom
+        threshold: 0.1, // Ativa quando 10% do elemento estiver visível
+        rootMargin: '0px 0px -50px 0px' // Offset para ativar um pouco antes do final
       }
     );
 

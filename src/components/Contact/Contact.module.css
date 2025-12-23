@@ -1,202 +1,197 @@
 .contact {
-  background: #020010;
-  position: relative;
-  overflow: hidden;
-}
-
-.footer {
-  padding: 4rem 2rem 2rem;
+  padding: 8rem 2rem 4rem;
+  background: var(--bg-color);
+  border-top: 1px solid rgba(255,255,255,0.1);
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
 }
 
-.top {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  margin-bottom: 4rem;
-  align-items: center;
+.header {
+  margin-bottom: 6rem;
 }
 
 .title {
-  font-size: var(--text-4xl);
-  font-weight: 700;
-  margin-bottom: 1.5rem;
+  font-family: var(--font-display);
+  font-size: var(--text-5xl);
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
 }
 
-.highlight {
-  background: var(--primary-gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.description {
+.subtitle {
   color: var(--text-secondary);
   font-size: var(--text-lg);
-  margin-bottom: 2rem;
-  max-width: 450px;
+  max-width: 500px;
 }
 
-.socials {
-  display: flex;
-  gap: 1rem;
+.content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8rem;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  padding-bottom: 6rem;
 }
 
-.socialLink {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid var(--glass-border);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--text-primary);
-  transition: all 0.2s;
-}
-
-.socialLink:hover {
-  background: var(--primary-color);
-  transform: translateY(-5px);
-  border-color: var(--primary-color);
-  box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
-}
-
-.form {
-  background: var(--glass-bg);
-  padding: 3rem;
-  border-radius: 1.5rem;
-  border: 1px solid var(--glass-border);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-  min-height: 450px;
+/* Links List Style */
+.links {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+}
+
+.linkItem {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  color: var(--text-secondary);
+  text-decoration: none;
+  padding: 2rem 0;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s;
+}
+
+.linkItem:first-child {
+  border-top: none;
+}
+
+.linkItem:hover {
+  color: var(--text-primary);
+  padding-left: 1rem;
+}
+
+.arrow {
+  opacity: 0;
+  transition: all 0.3s;
+}
+
+.linkItem:hover .arrow {
+  opacity: 1;
+  transform: translateX(-1rem);
+}
+
+/* Form Minimal Style */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 
 .inputGroup {
-  margin-bottom: 2rem;
-  position: relative;
+  width: 100%;
 }
 
 .input, .textarea {
   width: 100%;
-  padding: 1rem;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid var(--glass-border);
-  border-radius: 0.75rem;
+  padding: 1rem 0;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
   color: var(--text-primary);
-  font-family: inherit;
-  font-size: 1rem;
-  transition: all 0.3s;
+  font-family: var(--font-main);
+  font-size: var(--text-lg);
+  transition: border-color 0.3s;
+  text-transform: uppercase;
 }
 
-.textarea {
-  resize: vertical;
-  min-height: 120px;
+.input::placeholder, .textarea::placeholder {
+  color: var(--text-secondary);
+  opacity: 0.5;
 }
 
 .input:focus, .textarea:focus {
   outline: none;
-  border-color: var(--primary-color);
-  background: rgba(255, 255, 255, 0.05);
-  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+  border-bottom-color: var(--text-primary);
 }
 
-/* Floating Label Logic */
-.label {
-  position: absolute;
-  left: 1rem;
-  top: 1rem;
-  color: var(--text-secondary);
-  pointer-events: none;
-  transition: all 0.3s ease;
-  background: transparent;
-  padding: 0 0.25rem;
-}
-
-.input:focus ~ .label,
-.input:not(:placeholder-shown) ~ .label,
-.textarea:focus ~ .label,
-.textarea:not(:placeholder-shown) ~ .label {
-  top: -0.75rem;
-  left: 0.75rem;
-  font-size: 0.875rem;
-  color: var(--primary-color);
-  background: #060418; /* Matches bg behind form */
+.textarea {
+  min-height: 100px;
+  resize: none;
 }
 
 .button {
-  width: 100%;
-  padding: 1rem;
-  background: var(--primary-gradient);
-  border-radius: 0.75rem;
-  color: white;
-  font-weight: 600;
-  font-size: 1rem;
-  transition: opacity 0.2s, transform 0.2s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
+  background: var(--text-primary);
+  color: var(--bg-color);
+  border: none;
+  padding: 1.5rem;
+  font-family: var(--font-main);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: transform 0.2s;
+  margin-top: 2rem;
 }
 
-.button:hover:not(:disabled) {
-  opacity: 0.9;
+.button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(99, 102, 241, 0.2);
 }
 
 .button:disabled {
-  opacity: 0.7;
+  opacity: 0.5;
   cursor: not-allowed;
 }
 
-.spinner {
-  animation: spin 1s linear infinite;
-}
-
 .successMessage {
-  text-align: center;
-  animation: fadeIn 0.5s ease;
-  padding: 2rem;
-}
-
-.successIcon {
+  margin-top: 1rem;
   color: #4ade80;
-  margin-bottom: 1rem;
-  animation: bounceIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-family: var(--font-main);
 }
 
-.bottom {
-  border-top: 1px solid var(--glass-border);
-  padding-top: 2rem;
-  text-align: center;
+.errorMessage {
+  margin-top: 1rem;
+  color: #f87171;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-family: var(--font-main);
+}
+
+.footer {
+  margin-top: 4rem;
   color: var(--text-secondary);
-  font-size: var(--text-sm);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
 
-@keyframes spin { 
-  to { transform: rotate(360deg); } 
-}
-
-@keyframes bounceIn {
-  from { transform: scale(0); }
-  to { transform: scale(1); }
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@media (max-width: 768px) {
-  .top {
+@media (max-width: 960px) {
+  .content {
     grid-template-columns: 1fr;
-    gap: 3rem;
+    gap: 4rem;
+  }
+  
+  .title {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact {
+    padding: 4rem 1.5rem 2rem; /* Standardized padding */
+  }
+
+  .title {
+    font-size: 2rem; /* Matches Projects title */
+  }
+  
+  .linkItem {
+    font-size: 1.25rem; /* Smaller links */
+    padding: 1.25rem 0;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+  
+  .button {
+    padding: 1rem;
+    font-size: 0.875rem;
   }
 }

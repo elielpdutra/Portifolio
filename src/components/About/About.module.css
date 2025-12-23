@@ -1,114 +1,125 @@
 .about {
-  padding: var(--spacing-xl) 2rem;
+  padding: 8rem 2rem;
   background: var(--bg-color);
-  position: relative;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  align-items: center;
 }
 
-.imageWrapper {
-  position: relative;
-  border-radius: 2rem;
-  overflow: hidden;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+.header {
+  margin-bottom: 4rem;
 }
 
-.imageWrapper::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: var(--primary-gradient);
-  opacity: 0.2;
-  z-index: 1;
-}
-
-.imageWrapper img {
-  width: 100%;
-  height: auto;
-  display: block;
-  transform: scale(1.05); /* Slight zoom for effect */
-  transition: transform 0.5s ease;
-}
-
-.imageWrapper:hover img {
-  transform: scale(1.1);
+.label {
+    font-family: var(--font-main);
+    font-size: var(--text-sm);
+    letter-spacing: 0.2em;
+    color: var(--text-secondary);
+    border: 1px solid var(--text-secondary);
+    padding: 0.5rem 1rem;
+    border-radius: 999px;
+    text-transform: uppercase;
 }
 
 .content {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.sectionTitle {
-  font-size: var(--text-sm);
-  color: var(--primary-color);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-weight: 600;
-}
-
-.title {
-  font-size: var(--text-3xl);
-  font-weight: 700;
-}
-
-.description {
-  color: var(--text-secondary);
-  line-height: 1.8;
-  font-size: var(--text-base);
-}
-
-.statsGrid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-  margin-top: 2rem;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 6rem;
 }
 
-.statCard {
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
-  padding: 1.5rem;
-  border-radius: 1rem;
-  text-align: center;
-  transition: transform 0.2s;
+.headline h2 {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 3.5vw, 4.5rem); /* Safer scaling for grid column */
+    line-height: 1.1;
+    font-weight: 800;
+    color: var(--text-primary);
+    text-transform: uppercase;
+    margin: 0;
+    width: 100%; /* Ensure container fit */
+    max-width: 100%;
 }
 
-.statCard:hover {
-  transform: translateY(-5px);
-  background: rgba(255,255,255,0.08);
+.bio p {
+    font-family: var(--font-main);
+    font-size: var(--text-lg);
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin-bottom: 4rem;
 }
 
-.statNumber {
-  display: block;
-  font-size: var(--text-2xl);
-  font-weight: 700;
-  color: var(--primary-color);
-  margin-bottom: 0.5rem;
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 2rem;
+}
+
+.statItem {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.statValue {
+    font-family: var(--font-display);
+    font-size: 2.5rem; /* Slightly smaller */
+    font-weight: 700;
+    color: var(--text-primary);
 }
 
 .statLabel {
-  font-size: var(--text-xs);
-  color: var(--text-secondary);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+    font-family: var(--font-main);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    color: var(--text-secondary);
 }
 
 @media (max-width: 960px) {
-  .container {
-    grid-template-columns: 1fr;
-    gap: 3rem;
-  }
-  
-  .about {
-    padding: 4rem 1.5rem;
-  }
+    .content {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+    
+    .headline h2 {
+        font-size: 3rem; 
+        margin-bottom: 2rem;
+    }
+    
+    .stats {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .content {
+        max-width: 100%;
+        overflow-wrap: break-word; /* Ensure text wraps */
+    }
+
+    .headline h2 {
+        font-size: clamp(1rem, 7vw, 1.7rem); /* Extra small for narrow Android screens */
+        word-break: break-word; /* Allow break if absolutely necessary */
+        hyphens: auto;
+        line-height: 1.2;
+    }
+
+    .bio p {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+        max-width: 100%; /* Ensure p doesn't overflow */
+    }
+
+    .stats {
+        grid-template-columns: 1fr; /* Stack on mobile */
+        gap: 2rem;
+    }
+    
+    .statValue {
+        font-size: 2rem;
+    }
 }

@@ -30,7 +30,7 @@ export function ParticlesBackground() {
         this.y = Math.random() * canvas!.height;
         this.directionX = (Math.random() * 0.5) - 0.25;
         this.directionY = (Math.random() * 0.5) - 0.25;
-        this.size = Math.random() * 2 + 1; // Size between 1 and 3
+        this.size = Math.random() * 2 + 1; // Tamanho entre 1 e 3
       }
 
       update() {
@@ -48,7 +48,7 @@ export function ParticlesBackground() {
       draw() {
         ctx!.beginPath();
         ctx!.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
-        ctx!.fillStyle = 'rgba(99, 102, 241, 0.15)'; // Primary color with low opacity
+        ctx!.fillStyle = 'rgba(99, 102, 241, 0.15)'; // Cor primária com baixa opacidade
         ctx!.fill();
       }
     }
@@ -115,7 +115,7 @@ export function ParticlesBackground() {
         height: '100%',
         zIndex: -1,
         pointerEvents: 'none',
-        background: 'transparent' // Let CSS background show through
+        background: 'transparent' // Deixa o background do CSS aparecer
       }}
     />
   );

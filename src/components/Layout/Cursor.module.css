@@ -1,0 +1,36 @@
+.cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    mix-blend-mode: difference; /* Inverts color of underlying content */
+    transform: translate3d(-50%, -50%, 0); /* Center cursor */
+    /* Use 'will-change' for performance, but handled via JS transform for position */
+    will-change: transform;
+    transition: width 0.3s, height 0.3s, background-color 0.3s;
+    margin-top: -10px; /* Half width to center */
+    margin-left: -10px;
+}
+
+.hover {
+    width: 60px;
+    height: 60px;
+    margin-top: -30px;
+    margin-left: -30px;
+    background: #fff;
+    opacity: 1;
+}
+
+/* Hide default cursor on body/elements */
+:global(body) {
+    cursor: none;
+}
+
+:global(a), :global(button) {
+    cursor: none;
+}
