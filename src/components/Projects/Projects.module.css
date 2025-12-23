@@ -145,6 +145,7 @@
 
   .projectInfo {
     gap: 1rem;
+    align-items: flex-start;
   }
 
   .projectTitle {
